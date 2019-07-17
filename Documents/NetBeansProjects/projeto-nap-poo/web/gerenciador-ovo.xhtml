@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      template="template.xhtml">
+        
+        <h:form> 
+            <p:panelGrid columns="4"> 
+                <h:outputLabel for="quantidadeovos" value="Quantidade de ovos total"></h:outputLabel>
+                <p:inputText id="quantidadeovos" value="#{ovosBean.ovo.quantidadeovos}"></p:inputText>
+                <h:outputLabel for="pesototal" value="Peso total(KG)"></h:outputLabel>
+                <p:inputMask id="pesototal" mask="999.99" value="#{ovosBean.ovo.pesototal}"></p:inputMask>
+                <h:outputLabel for="quantidadeovospequeno" value="Quantidade de ovos pequenos"></h:outputLabel>
+                <p:inputText id="quantidadeovospequeno" value="#{ovosBean.ovo.quantidadeovospequeno}"></p:inputText>
+                <h:outputLabel for="quantidadeovosjumbo" value="Quantidade de ovos jumbo"></h:outputLabel>
+                <p:inputText id="quantidadeovosjumbo" value="#{ovosBean.ovo.quantidadeovosjumbo}"></p:inputText>
+                <h:outputLabel for="quantidadeovossujo" value="Quantidade de ovos sujos"></h:outputLabel>
+                <p:inputText id="quantidadeovossujo" value="#{ovosBean.ovo.quantidadeovossujo}"></p:inputText>
+                <h:outputLabel for="quantidadeovostrincado" value="Quantidade de ovos trincados"></h:outputLabel>
+                <p:inputText id="quantidadeovostrincado" value="#{ovosBean.ovo.quantidadeovostrincado}"></p:inputText>
+                <h:outputLabel for="quantidadeovoscomsangue" value="Quantidade de ovos com sangue"></h:outputLabel>
+                <p:inputText id="quantidadeovoscomsangue" value="#{ovosBean.ovo.quantidadeovoscomsangue}"></p:inputText>
+                <h:outputLabel for="quantidadeovosestranhos" value="Quantidade de ovos estranhos"></h:outputLabel>
+                <p:inputText id="quantidadeovosestranhos" value="#{ovosBean.ovo.quantidadeovosestranho}"></p:inputText>
+            </p:panelGrid>
+            <br/>
+            <p:toolbar>
+                <p:toolbarGroup align="right">
+                    <p:commandButton value="Adicionar Lista" action="#{ovosBean.adicionarOvo()}" update="@form"></p:commandButton>
+                    <p:commandButton value="Listar" action="#{ovosBean.listarOvos()}" update="@form"></p:commandButton>
+                </p:toolbarGroup>
+            </p:toolbar>
+            <br/>
+            <p:dataTable value="#{ovosBean.ovos}" var="ovo">
+                <p:column>
+                    <p:commandButton value="Editar" action="#{ovosBean.modificarOvos(ovo)}" update="@form"></p:commandButton>
+                </p:column>
+                <p:column headerText="Quantidade de ovos total" sortBy="#{ovo.quantidadeovos}">
+                    <h:outputText value="#{ovo.quantidadeovos}"></h:outputText>
+                </p:column>
+                <p:column headerText="Peso Total ovo(KG)" sortBy="#{ovo.pesototal}">
+                    <h:outputText value="#{ovo.pesototal}"></h:outputText>
+                </p:column>
+                <p:column headerText="Quantidade de ovos pequenos" sortBy="#{ovo.quantidadeovospequeno}">
+                    <h:outputText value="#{ovo.quantidadeovospequeno}"></h:outputText>
+                </p:column>
+                <p:column headerText="Quantidade de ovos jumbo" sortBy="#{ovo.quantidadeovosjumbo}">
+                    <h:outputText value="#{ovo.quantidadeovosjumbo}"></h:outputText>
+                </p:column>
+                <p:column headerText="Quantidade de ovos sujos" sortBy="#{ovo.quantidadeovossujo}">
+                    <h:outputText value="#{ovo.quantidadeovossujo}"></h:outputText>
+                </p:column>
+                <p:column headerText="Quantidade de ovos trincados" sortBy="#{ovo.quantidadeovostrincado}">
+                    <h:outputText value="#{ovo.quantidadeovostrincado}"></h:outputText>
+                </p:column>
+                <p:column headerText="Quantidade de ovos com sangue" sortBy="#{ovo.quantidadeovoscomsangue}">
+                    <h:outputText value="#{ovo.quantidadeovoscomsangue}"></h:outputText>
+                </p:column>
+                <p:column headerText="Quantidade de ovos estranhos" sortBy="#{ovo.quantidadeovosestranho}">
+                    <h:outputText value="#{ovo.quantidadeovosestranho}"></h:outputText>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+</ui:decorate>
+
